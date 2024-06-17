@@ -1,3 +1,26 @@
+### Project Structure
+src/
+  components/
+    NavBar.js
+    Login.js
+    Register.js
+    Users.js
+    Posts.js
+    Post.js
+    Friends.js
+    FriendRequests.js
+    Groups.js
+    GroupMemberships.js
+    GroupRequests.js
+    Comments.js
+    Comment.js
+  App.js
+  index.js
+  api.js
+  auth.js
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
