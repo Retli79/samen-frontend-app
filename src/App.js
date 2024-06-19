@@ -30,7 +30,7 @@ function App() {
               <Route path="/groups" element={<Groups />} />
               <Route path="/group_memberships" element={<GroupMemberships />} />
               <Route path="/group_requests" element={<GroupRequests />} />
-              <Route path="/comments" element={<Comments />} />
+              <Route path="/comments" element={<Comments />} />        
             </>
           )}
         </Routes>

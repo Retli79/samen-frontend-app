@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../api';
 import { setToken } from '../auth';
+import './login.css';
+import logo from '../assets/logo.png';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -25,7 +27,9 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login-form" onSubmit={handleSubmit}>
+      <img src={logo} alt="Logo" className="login-logo" />
+      <h2>Login</h2>
       <div>
         <label>Username</label>
         <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
@@ -35,7 +39,9 @@ const Login = () => {
         <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
       </div>
       <button type="submit">Login</button>
+      <p>If you don't have an account, please <a href="/register">register</a>.</p>
     </form>
+
   );
 };
 
