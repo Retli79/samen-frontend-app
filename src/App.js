@@ -12,28 +12,31 @@ import GroupMemberships from './components/GroupMemberships';
 import GroupRequests from './components/GroupRequests';
 import Comments from './components/Comments';
 import { isAuthenticated } from './auth';
+import './App.css'; // Import your CSS file for styling
 
 function App() {
   return (
     <Router>
-      <NavBar />
-      <div className="App">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          {isAuthenticated() && (
-            <>
-              <Route path="/users" element={<Users />} />
-              <Route path="/posts" element={<Posts />} />
-              <Route path="/friends" element={<Friends />} />
-              <Route path="/friend_requests" element={<FriendRequests />} />
-              <Route path="/groups" element={<Groups />} />
-              <Route path="/group_memberships" element={<GroupMemberships />} />
-              <Route path="/group_requests" element={<GroupRequests />} />
-              <Route path="/comments" element={<Comments />} />        
-            </>
-          )}
-        </Routes>
+      <div className="container">
+        {isAuthenticated() && <NavBar />} {/* Render NavBar only if authenticated */}
+        <div className={isAuthenticated() ? "content" : "full-content"}>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            {isAuthenticated() && (
+              <>
+                <Route path="/users" element={<Users />} />
+                <Route path="/posts" element={<Posts />} />
+                <Route path="/friends" element={<Friends />} />
+                <Route path="/friend_requests" element={<FriendRequests />} />
+                <Route path="/groups" element={<Groups />} />
+                <Route path="/group_memberships" element={<GroupMemberships />} />
+                <Route path="/group_requests" element={<GroupRequests />} />
+                <Route path="/comments" element={<Comments />} />        
+              </>
+            )}
+          </Routes>
+        </div>
       </div>
     </Router>
   );

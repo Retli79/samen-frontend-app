@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     login(credentials)
       .then(response => {
-        setToken(response.data.token);
+        setToken(response.data.token, credentials.username);
         navigate('/users');
       })
       .catch(error => {
@@ -41,7 +41,6 @@ const Login = () => {
       <button type="submit">Login</button>
       <p>If you don't have an account, please <a href="/register">register</a>.</p>
     </form>
-
   );
 };
 

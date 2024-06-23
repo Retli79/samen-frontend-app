@@ -1,6 +1,9 @@
+// NavBar.js
+
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { isAuthenticated, clearToken } from '../auth';
+import { isAuthenticated, clearToken, getUsername } from '../auth';
+import './NavBar.css'; // Import your CSS file for styling
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -11,7 +14,10 @@ const NavBar = () => {
   };
 
   return (
-    <nav>
+    <nav className="navbar">
+      <div className="navbar-top">
+        <span className="username">{getUsername()}</span>
+      </div>
       <ul>
         {!isAuthenticated() ? (
           <>
@@ -28,7 +34,7 @@ const NavBar = () => {
             <li><Link to="/group_memberships">Group Memberships</Link></li>
             <li><Link to="/group_requests">Group Requests</Link></li>
             <li><Link to="/comments">Comments</Link></li>
-            <li><button onClick={handleLogout}>Logout</button></li>
+            <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
           </>
         )}
       </ul>

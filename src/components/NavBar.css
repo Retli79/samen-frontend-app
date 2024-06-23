@@ -1,0 +1,67 @@
+/* NavBar.css */
+
+.navbar {
+    background-color: #ed9644; /* Sidebar background color */
+    width: 250px; /* Sidebar width */
+    height: 100%; /* Full height sidebar */
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    overflow-x: hidden; /* Hide overflow for small screens */
+    padding-top: 20px; /* Adjust padding for top */
+  }
+  
+  .navbar-top {
+    padding: 10px;
+    text-align: center;
+    color: #fff; /* Username text color */
+    background-color: #ed9644; /* Background color */
+    margin-bottom: 10px; /* Adjust margin */
+    font-weight: bold;
+  }
+  
+  .username {
+    font-weight: bold; /* Make username text bold */
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    margin-bottom: 10px; /* Adjust margin between list items */
+  }
+  
+  .navbar ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff; /* Link color */
+    font-weight: bold;
+  }
+  
+  .navbar ul li a:hover {
+    background-color: #f47e63; /* Hover background color */
+  }
+  
+  .logout-btn {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #ed9644;
+    background-color: #ffffff; /* Logout button color */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: auto; /* Center the button horizontally */
+    width: 80%; /* Optional: Adjust width as needed */
+    font-weight: bold;
+    text-align: center; /* Center text inside the button */
+    margin-top: 20px;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c23321; /* Logout button hover color */
+  }
+  
