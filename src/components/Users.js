@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { fetchUsers } from '../api';
+import { isAuthenticated } from '../auth';
+import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
   const [users, setUsers] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/login'); // Redirect to login if not authenticated
+      return;
+    }
 
   useEffect(() => {
     fetchUsers()
@@ -12,7 +21,7 @@ const Users = () => {
       .catch(error => {
         console.error("There was an error fetching the users!", error);
       });
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

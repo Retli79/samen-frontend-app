@@ -4,6 +4,7 @@ import { login } from '../api';
 import { setToken } from '../auth';
 import './login.css';
 import logo from '../assets/logo.png';
+import sidebarImage from '../assets/sidebarImage.jpeg'; // Ensure this image supports transparency
 
 const Login = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
@@ -18,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     login(credentials)
       .then(response => {
-        setToken(response.data.token, credentials.username);
+        setToken(response.data.access_token, credentials.username);
         navigate('/users');
       })
       .catch(error => {
@@ -27,20 +28,25 @@ const Login = () => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <img src={logo} alt="Logo" className="login-logo" />
-      <h2>Login</h2>
-      <div>
-        <label>Username</label>
-        <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+    <div className="login-container">
+      <div className="login-image-container">
+        <img src={sidebarImage} alt="Sidebar" className="login-image" />
       </div>
-      <div>
-        <label>Password</label>
-        <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-      </div>
-      <button type="submit">Login</button>
-      <p>If you don't have an account, please <a href="/register">register</a>.</p>
-    </form>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <img src={logo} alt="Logo" className="login-logo" />
+        <h2>Login</h2>
+        <div>
+          <label>Username</label>
+          <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+        </div>
+        <button type="submit">Login</button>
+        <p>If you don't have an account, please <a href="/register">register</a>.</p>
+      </form>
+    </div>
   );
 };
 

@@ -12,14 +12,14 @@ import GroupMemberships from './components/GroupMemberships';
 import GroupRequests from './components/GroupRequests';
 import Comments from './components/Comments';
 import { isAuthenticated } from './auth';
-import './App.css'; // Import your CSS file for styling
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div className="app-container">
         {isAuthenticated() && <NavBar />} {/* Render NavBar only if authenticated */}
-        <div className={isAuthenticated() ? "content" : "full-content"}>
+        <div className="content">
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
