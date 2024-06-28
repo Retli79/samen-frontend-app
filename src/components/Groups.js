@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import { fetchGroups } from '../api';
-import GroupRequests from './GroupRequests';
-import GroupMemberships from './GroupMemberships';
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { fetchGroups } from "../api";
+import GroupRequests from "./GroupRequests";
+import GroupMemberships from "./GroupMemberships";
 
 const Groups = () => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     fetchGroups()
-      .then(response => {
+      .then((response) => {
         setGroups(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error fetching the groups!", error);
       });
   }, []);
@@ -22,8 +22,16 @@ const Groups = () => {
       <div className="groups-sidebar">
         <h2>Groups</h2>
         <ul>
-          <li><Link to="group_memberships">Group Memberships</Link></li>
-          <li><Link to="group_requests">Group Requests</Link></li>
+          <p>
+            Welcome to the Groups home page. Here you can find information about
+            various groups.
+          </p>
+          {/* <li> 
+            <Link to="group_memberships">Group Memberships</Link>
+          </li>
+          <li>
+            <Link to="group_requests">Group Requests</Link>
+          </li>*/}
         </ul>
       </div>
       <div className="groups-content">
@@ -33,8 +41,10 @@ const Groups = () => {
         </Routes>
         {groups.length > 0 ? (
           <ul>
-            {groups.map(group => (
-              <li key={group.id}>{group.name} - {group.description}</li>
+            {groups.map((group) => (
+              <li key={group.id}>
+                {group.name} - {group.description}
+              </li>
             ))}
           </ul>
         ) : (

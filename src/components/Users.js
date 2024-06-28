@@ -11,7 +11,7 @@ const Users = () => {
     if (!isAuthenticated()) {
       navigate('/login'); // Redirect to login if not authenticated
       return;
-    }
+    }})
 
   useEffect(() => {
     fetchUsers()

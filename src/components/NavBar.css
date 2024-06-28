@@ -68,3 +68,102 @@
   margin-left: 250px; /* Same width as the sidebar */
   padding: 20px;
 }
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-bottom: 10px; /* Adjust margin between list items */
+}
+
+.navbar ul li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff; /* Link color */
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  background-color: #f47e63; /* Hover background color */
+}
+
+.navbar .group-options {
+  list-style-type: none;
+  padding-left: 20px; /* Indent the group options */
+  margin-top: 10px;
+}
+
+.navbar .group-options li {
+  margin-bottom: 10px; /* Adjust margin between list items */
+}
+
+.navbar .group-options li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff; /* Link color */
+  font-weight: bold;
+}
+
+.navbar .group-options li a:hover {
+  background-color: #f47e63; /* Hover background color */
+}
+
+/* NavBar.css */
+
+.navbar {
+  /* Your existing styles */
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin-bottom: 10px; /* Adjust margin between list items */
+}
+
+.navbar ul li a,
+.navbar ul li .nav-link,
+.navbar ul li button {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff; /* Link color */
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar ul li a:hover,
+.navbar ul li .nav-link:hover,
+.navbar ul li button:hover {
+  background-color: #f47e63; /* Hover background color */
+}
+
+.navbar .nested-options {
+  list-style-type: none;
+  padding-left: 20px; /* Indent the options */
+  margin-top: 10px;
+}
+
+.navbar .nested-options li {
+  margin-bottom: 10px; /* Adjust margin between list items */
+}
+
+.navbar .nested-options li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #fff; /* Link color */
+  font-weight: bold;
+}
+
+.navbar .nested-options li a:hover {
+  background-color: #f47e63; /* Hover background color */
+}
+
