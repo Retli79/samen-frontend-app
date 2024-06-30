@@ -1,5 +1,3 @@
-// api.js
-
 import axios from "axios";
 import { getToken } from "./auth";
 
@@ -7,83 +5,33 @@ const api = axios.create({
   baseURL: "http://localhost:8000",
 });
 
-export const fetchUsers = () => {
+api.interceptors.request.use((config) => {
   const token = getToken();
-  return api.get("/users/", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
-export const fetchPosts = () => {
-  const token = getToken();
-  return api.get("/posts", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+// Fetch comments for a specific post
+export const fetchComments = (postId) => api.get(`/comments?post_id=${postId}`);
 
-export const fetchFriends = (userId) => {
-  const token = getToken();
-  return api.get(`/users/${userId}/friends`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+// Create a new comment
+export const createComment = (commentData) =>
+  api.post("/comments", commentData);
 
-export const fetchFriendRequests = () => {
-  const token = getToken();
-  return api.get("/friendsrequests", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const fetchGroups = () => {
-  const token = getToken();
-  return api.get("/groups", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const fetchGroupMemberships = () => {
-  const token = getToken();
-  return api.get("/group_memberships", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const fetchGroupRequests = () => {
-  const token = getToken();
-  return api.get("/group_requests", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const fetchComments = () => {
-  const token = getToken();
-  return api.get("/comments", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
+// Other API functions...
+export const fetchUsers = () => api.get("/users");
+export const fetchPosts = () => api.get("/posts");
+export const fetchFriends = (userId) => api.get(`/users/${userId}/friends`);
+export const fetchFriendRequests = () => api.get("/friendsrequests");
+export const fetchGroups = () => api.get("/groups");
+export const fetchGroupMemberships = () => api.get("/group_memberships");
+export const fetchGroupRequests = () => api.get("/group_requests");
 export const login = (credentials) => {
   const params = new URLSearchParams();
   params.append("username", credentials.username);
   params.append("password", credentials.password);
   return api.post("/token", params);
 };
-
 export const register = (userData) => api.post("/register", userData);
