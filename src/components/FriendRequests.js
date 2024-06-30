@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { fetchFriendRequests } from '../api';
+// FriendRequests.js
+
+import React, { useEffect, useState } from "react";
+import { fetchFriendRequests } from "../api";
 
 const FriendRequests = () => {
   const [friendRequests, setFriendRequests] = useState([]);
 
   useEffect(() => {
     fetchFriendRequests()
-      .then(response => {
+      .then((response) => {
         setFriendRequests(response.data);
       })
-      .catch(error => {
-        console.error("There was an error fetching the friend requests!", error);
+      .catch((error) => {
+        console.error(
+          "There was an error fetching the friend requests!",
+          error
+        );
       });
   }, []);
 
@@ -19,8 +24,10 @@ const FriendRequests = () => {
       <h1>Friend Requests</h1>
       {friendRequests.length > 0 ? (
         <ul>
-          {friendRequests.map(request => (
-            <li key={request.id}>{request.sender.username} - {request.status}</li>
+          {friendRequests.map((request) => (
+            <li key={request.id}>
+              {request.sender.username} - {request.status}
+            </li>
           ))}
         </ul>
       ) : (

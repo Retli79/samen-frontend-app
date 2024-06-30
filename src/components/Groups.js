@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import { fetchGroups } from "../api";
 import GroupRequests from "./GroupRequests";
 import GroupMemberships from "./GroupMemberships";
+import "./Groups.css"; // Import the CSS file
 
 const Groups = () => {
   const [groups, setGroups] = useState([]);
@@ -18,20 +19,20 @@ const Groups = () => {
   }, []);
 
   return (
-    <div className="groups-container">
+    <div className="groups-page">
       <div className="groups-sidebar">
         <h2>Groups</h2>
+        <p>
+          Welcome to the Groups home page. Here you can find information about
+          various groups.
+        </p>
         <ul>
-          <p>
-            Welcome to the Groups home page. Here you can find information about
-            various groups.
-          </p>
-          {/* <li> 
+          <li>
             <Link to="group_memberships">Group Memberships</Link>
           </li>
           <li>
             <Link to="group_requests">Group Requests</Link>
-          </li>*/}
+          </li>
         </ul>
       </div>
       <div className="groups-content">
@@ -39,17 +40,18 @@ const Groups = () => {
           <Route path="group_memberships" element={<GroupMemberships />} />
           <Route path="group_requests" element={<GroupRequests />} />
         </Routes>
-        {groups.length > 0 ? (
-          <ul>
-            {groups.map((group) => (
-              <li key={group.id}>
-                {group.name} - {group.description}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No groups available</p>
-        )}
+        <div className="group-list">
+          {groups.length > 0 ? (
+            groups.map((group) => (
+              <div key={group.id} className="group-card">
+                <h3>{group.name}</h3>
+                <p>{group.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>No groups available</p>
+          )}
+        </div>
       </div>
     </div>
   );
