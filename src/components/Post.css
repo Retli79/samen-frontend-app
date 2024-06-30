@@ -41,3 +41,25 @@
     margin-bottom: 8px;
   }
   
+  .comment-form {
+    margin-top: 1rem;
+  }
+  
+  .comment-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .comment-form button {
+    padding: 0.5rem 1rem;
+    background-color: #ed9644;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .comment-form button:hover {
+    background-color: #f47e63;
+  }
+  
