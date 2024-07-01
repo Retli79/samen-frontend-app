@@ -75,9 +75,7 @@ const NavBar = () => {
                 </ul>
               )}
             </li>
-            <li>
-              <Link to="/comments">Comments</Link>
-            </li>
+            <li>{/* <Link to="/comments">Comments</Link> */}</li>
             <li>
               <button className="logout-btn" onClick={handleLogout}>
                 Logout

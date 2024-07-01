@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Comment from "./Comment";
 import { createComment } from "../api";
 import "./Post.css";
+import { getUsername } from "../auth"; // Import getUsername from auth.js
 
 const Post = ({ post }) => {
   const [commentText, setCommentText] = useState("");
@@ -13,8 +14,16 @@ const Post = ({ post }) => {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    if (commentText.trim()) {
-      createComment(post.id, { text: commentText })
+    const username = getUsername(); // Retrieve the authenticated username
+
+    if (commentText.trim() && username) {
+      const commentData = {
+        username, // Use the authenticated username
+        text: commentText,
+        post_id: post.id,
+      };
+
+      createComment(commentData)
         .then((response) => {
           setComments([...comments, response.data]);
           setCommentText("");
@@ -22,6 +31,8 @@ const Post = ({ post }) => {
         .catch((error) => {
           console.error("There was an error submitting the comment!", error);
         });
+    } else {
+      console.error("User is not authenticated or comment text is empty");
     }
   };
 

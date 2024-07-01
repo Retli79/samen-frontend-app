@@ -1,3 +1,4 @@
+// api.js
 import axios from "axios";
 import { getToken } from "./auth";
 
@@ -13,10 +14,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Fetch comments for a specific post
 export const fetchComments = (postId) => api.get(`/comments?post_id=${postId}`);
-
-// Create a new comment
 export const createComment = (commentData) =>
   api.post("/comments", commentData);
 
