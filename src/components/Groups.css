@@ -1,0 +1,70 @@
+/* Groups.css */
+
+.groups-page {
+    display: flex;
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .groups-sidebar {
+    width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .groups-sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .groups-sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .groups-sidebar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .groups-sidebar ul li a {
+    text-decoration: none;
+    color: #1877f2;
+  }
+  
+  .groups-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .group-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .group-card {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: calc(33.333% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.2s;
+  }
+  
+  .group-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .group-card h3 {
+    margin-top: 0;
+  }
+  
+  .group-card p {
+    color: #666666;
+  }
+  

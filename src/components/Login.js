@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { login } from '../api';
-import { setToken } from '../auth';
-import './login.css';
-import logo from '../assets/logo.png';
-import sidebarImage from '../assets/sidebarImage.jpeg'; // Ensure this image supports transparency
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../api";
+import { setToken } from "../auth";
+import "./login.css";
+import logo from "../assets/logo.png";
+import sidebarImage from "../assets/sidebarImage.jpeg"; // Ensure this image supports transparency
 
 const Login = () => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,11 +21,11 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(credentials)
-      .then(response => {
+      .then((response) => {
         setToken(response.data.access_token, credentials.username);
-        navigate('/users');
+        navigate("/posts");
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("There was an error logging in!", error);
       });
   };
@@ -37,14 +40,28 @@ const Login = () => {
         <h2>Login</h2>
         <div>
           <label>Username</label>
-          <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+          <input
+            type="text"
+            name="username"
+            value={credentials.username}
+            onChange={handleChange}
+            required
+          />
         </div>
         <div>
           <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+          <input
+            type="password"
+            name="password"
+            value={credentials.password}
+            onChange={handleChange}
+            required
+          />
         </div>
         <button type="submit">Login</button>
-        <p>If you don't have an account, please <a href="/register">register</a>.</p>
+        <p>
+          If you don't have an account, please <a href="/register">register</a>.
+        </p>
       </form>
     </div>
   );
