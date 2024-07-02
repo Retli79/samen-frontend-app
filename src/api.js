@@ -6,9 +6,9 @@ const api = axios.create({
 });
 
 
-export const fetchUsers = () => {
+export const fetchUsers = () =>{
   const token = getToken();
-  return api( { method: 'get', url:'/users/',
+  return api.get( '/users/',{
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -6,7 +6,7 @@ const Post = ({ post }) => {
     <div>
       <h2>{post.title}</h2>
       <p>{post.content}</p>
-      {post.image_url && <img src={`http://localhost:8000/images/${post.image_url}`} alt={post.caption} />}
+      {post.image_url && <img src={post.image_url} alt={post.caption} />}
       <h3>Comments</h3>
       {post.comments && post.comments.length > 0 ? (
         post.comments.map(comment => (
