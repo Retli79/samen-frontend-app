@@ -12,7 +12,6 @@ const Users = () => {
       navigate("/login"); // Redirect to login if not authenticated
       return;
     }
-  }, [navigate]);
 
   useEffect(() => {
     fetchUsers()

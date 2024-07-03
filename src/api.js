@@ -5,13 +5,15 @@ const api = axios.create({
   baseURL: "http://localhost:8000",
 });
 
-api.interceptors.request.use((config) => {
+
+export const fetchUsers = () => {
   const token = getToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+  return api( { method: 'get', url:'/users/',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 export const fetchComments = (postId) => api.get(`/comments?post_id=${postId}`);
 export const createComment = (commentData) =>
