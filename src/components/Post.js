@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
-import { createComment } from "../api";
+import { createComment, deletePost } from "../api";
 import "./Post.css";
-import { getUsername } from "../auth"; // Import getUsername from auth.js
+import { getUsername, getUserId } from "../auth"; // Import getUserId from auth.js
 
-const Post = ({ post }) => {
+const Post = ({ post, onDelete }) => {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState(post.comments || []);
 
@@ -36,6 +36,16 @@ const Post = ({ post }) => {
     }
   };
 
+  const handleDeletePost = () => {
+    deletePost(post.id)
+      .then(() => {
+        onDelete(post.id);
+      })
+      .catch((error) => {
+        console.error("There was an error deleting the post!", error);
+      });
+  };
+
   return (
     <div className="post-card">
       <h2 className="post-title">{post.title}</h2>
@@ -64,6 +74,11 @@ const Post = ({ post }) => {
           <button type="submit">Submit</button>
         </form>
       </div>
+      {getUserId() === post.owner_id && (
+        <button onClick={handleDeletePost} className="delete-button">
+          Delete Post
+        </button>
+      )}
     </div>
   );
 };

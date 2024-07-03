@@ -4,7 +4,7 @@ import { login } from "../api";
 import { setToken } from "../auth";
 import "./login.css";
 import logo from "../assets/logo.png";
-import sidebarImage from "../assets/sidebarImage.jpeg"; // Ensure this image supports transparency
+import sidebarImage from "../assets/sidebarImage.jpeg";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -22,7 +22,12 @@ const Login = () => {
     e.preventDefault();
     login(credentials)
       .then((response) => {
-        setToken(response.data.access_token, credentials.username);
+        console.log(response.data); // Log the response for debugging
+        setToken(
+          response.data.access_token,
+          credentials.username,
+          response.data.user_id
+        );
         navigate("/posts");
       })
       .catch((error) => {

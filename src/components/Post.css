@@ -1,65 +1,82 @@
 /* Post.css */
 
 .post-card {
-    border: 1px solid #dbdbdb;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    background-color: #fff;
-    max-width: 600px;
-    margin: 20px auto;
-  }
-  
-  .post-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 16px;
-  }
-  
-  .post-content {
-    font-size: 14px;
-    margin: 0 16px 16px 16px;
-  }
-  
-  .post-image-container {
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .post-image {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .comments-section {
-    padding: 16px;
-  }
-  
-  .comments-section h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  
-  .comment-form {
-    margin-top: 1rem;
-  }
-  
-  .comment-form textarea {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .comment-form button {
-    padding: 0.5rem 1rem;
-    background-color: #ed9644;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .comment-form button:hover {
-    background-color: #f47e63;
-  }
-  
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #fff;
+  max-width: 600px;
+  margin: 20px auto;
+  position: relative; /* Ensure relative positioning for absolute positioning of delete button */
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 16px;
+}
+
+.post-content {
+  font-size: 14px;
+  margin: 0 16px 16px 16px;
+}
+
+.post-image-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.comments-section {
+  padding: 16px;
+}
+
+.comments-section h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.comment-form {
+  margin-top: 1rem;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment-form button {
+  padding: 0.5rem 1rem;
+  background-color: #ed9644;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background-color: #f47e63;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f44336; /* Red color for delete button */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
