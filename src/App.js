@@ -32,7 +32,7 @@ function App() {
                 <Route path="/users" element={<Users />} />
                 <Route path="/posts" element={<Posts />} />
                 <Route path="/friends" element={<Friends />} />
-                <Route path="/friend_requests" element={<FriendRequests />} />
+                <Route path="/friendrequests" element={<FriendRequests />} />
                 <Route path="/groups" element={<Groups />} />
                 <Route
                   path="/group_memberships"

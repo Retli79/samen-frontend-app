@@ -1,3 +1,4 @@
+// auth.js
 import { jwtDecode } from "jwt-decode";
 
 let token = null;

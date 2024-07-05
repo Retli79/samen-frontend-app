@@ -5,10 +5,57 @@ const api = axios.create({
   baseURL: "http://localhost:8000",
 });
 
+api.interceptors.request.use(
+  (config) => {
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const fetchUsers = () => {
   const token = getToken();
-  return api( { method: 'get', url:'/users/',
+  return api({
+    method: "get",
+    url: "/users/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const fetchPosts = () => {
+  const token = getToken();
+  return api({
+    method: "get",
+    url: "/posts/",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const fetchFriends = (userId) => {
+  const token = getToken();
+  return api({
+    method: "get",
+    url: `/friends/${userId}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const fetchFriendRequests = (userId) => {
+  const token = getToken();
+  return api({
+    method: "get",
+    url: `/friendrequests/${userId}`,
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -18,14 +65,12 @@ export const fetchUsers = () => {
 export const fetchComments = (postId) => api.get(`/comments?post_id=${postId}`);
 export const createComment = (commentData) =>
   api.post("/comments", commentData);
+export const deleteComment = (commentId) =>
+  api.delete(`/comments/${commentId}`);
 
 export const createPost = (postData) =>
   api.post("/posts/create_post", postData);
 
-export const fetchUsers = () => api.get("/users");
-export const fetchPosts = () => api.get("/posts");
-export const fetchFriends = (userId) => api.get(`/users/${userId}/friends`);
-export const fetchFriendRequests = () => api.get("/friendsrequests");
 export const fetchGroups = () => api.get("/groups");
 export const createGroup = (groupData) => api.post("/groups", groupData);
 export const fetchGroupMemberships = () => api.get("/group_memberships");

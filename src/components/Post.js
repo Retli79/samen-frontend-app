@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Comment from "./Comment";
-import { createComment, deletePost } from "../api";
+import { createComment, deletePost, deleteComment } from "../api";
 import "./Post.css";
 import { getUsername, getUserId } from "../auth"; // Import getUserId from auth.js
 
@@ -45,7 +45,12 @@ const Post = ({ post, onDelete }) => {
         console.error("There was an error deleting the post!", error);
       });
   };
-
+  const username = localStorage.getItem("username");
+  const handelDeleteComment = (id) => {
+    deleteComment(id);
+    const newComments = comments.filter((item) => item.id !== id);
+    setComments(newComments);
+  };
   return (
     <div className="post-card">
       <h2 className="post-title">{post.title}</h2>
@@ -59,7 +64,12 @@ const Post = ({ post, onDelete }) => {
         <h3>Comments</h3>
         {comments.length > 0 ? (
           comments.map((comment) => (
-            <Comment key={comment.id} comment={comment} />
+            <Comment
+              key={comment.id}
+              onClick={() => handelDeleteComment(comment.id)}
+              username={username}
+              comment={comment}
+            />
           ))
         ) : (
           <p>No comments available</p>

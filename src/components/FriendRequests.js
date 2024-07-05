@@ -12,26 +12,23 @@ const FriendRequests = () => {
         setFriendRequests(response.data);
       })
       .catch((error) => {
-        console.error(
-          "There was an error fetching the friend requests!",
-          error
-        );
+        console.error("Error fetching pending friend requests:", error);
       });
   }, []);
 
   return (
     <div>
-      <h1>Friend Requests</h1>
+      <h1>Pending Friend Requests</h1>
       {friendRequests.length > 0 ? (
         <ul>
           {friendRequests.map((request) => (
             <li key={request.id}>
-              {request.sender.username} - {request.status}
+              {request.sender_username} - {request.status}
             </li>
           ))}
         </ul>
       ) : (
-        <p>No friend requests available</p>
+        <p>No pending friend requests available</p>
       )}
     </div>
   );
